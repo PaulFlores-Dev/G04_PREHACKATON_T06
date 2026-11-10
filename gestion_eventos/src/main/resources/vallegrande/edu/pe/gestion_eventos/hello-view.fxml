@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="vallegrande.edu.pe.gestion_eventos.HelloController"
+      spacing="12"
+      prefWidth="1150"
+      prefHeight="700"
+      style="-fx-background-color: #f8fafc;">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Gestión de participantes"
+           style="-fx-font-size: 24px; -fx-font-weight: bold;
+                  -fx-text-fill: #075985;"/>
+
+    <VBox fx:id="formBox"
+          spacing="10"
+          style="-fx-background-color: white;
+                 -fx-padding: 15;
+                 -fx-background-radius: 8;
+                 -fx-border-color: #dbe3ec;
+                 -fx-border-radius: 8;">
+
+        <Label fx:id="formTitle"
+               text="Nuevo participante"
+               style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+        <GridPane hgap="15" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="33.33"/>
+                <ColumnConstraints percentWidth="33.33"/>
+                <ColumnConstraints percentWidth="33.34"/>
+            </columnConstraints>
+
+            <Label text="Nombres *"
+                   GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label text="Apellidos *"
+                   GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Label text="DNI *"
+                   GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+
+            <TextField fx:id="namesField"
+                       promptText="Nombres"
+                       GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="lastNamesField"
+                       promptText="Apellidos"
+                       GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <TextField fx:id="dniField"
+                       promptText="8 dígitos"
+                       GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
+            <Label text="Correo *"
+                   GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <Label text="Teléfono"
+                   GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <Label text="Institución *"
+                   GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+
+            <TextField fx:id="emailField"
+                       promptText="correo@ejemplo.com"
+                       GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+            <TextField fx:id="phoneField"
+                       promptText="Opcional"
+                       GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <ComboBox fx:id="institutionField"
+                      editable="true"
+                      maxWidth="Infinity"
+                      promptText="Selecciona o escribe una institución"
+                      GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+        </GridPane>
+
+        <HBox spacing="10">
+            <Button fx:id="saveButton"
+                    text="Guardar participante"
+                    onAction="#saveParticipant"
+                    style="-fx-background-color: #0369a1;
+                           -fx-text-fill: white;"/>
+
+            <Button text="Nuevo / Cancelar edición"
+                    onAction="#clearForm"/>
+
+            <Button fx:id="deleteButton"
+                    text="Eliminar participante"
+                    onAction="#deleteParticipant"
+                    disable="true"
+                    style="-fx-text-fill: #b91c1c;"/>
+        </HBox>
+
+        <Label text="* Campos obligatorios. Selecciona una fila para editar o eliminar."
+               wrapText="true"/>
+    </VBox>
+
+    <FlowPane hgap="10" vgap="8">
+        <TextField fx:id="searchField"
+                   promptText="Buscar por DNI, nombre, apellido o correo"
+                   prefWidth="330"/>
+
+        <ComboBox fx:id="institutionFilter"
+                  promptText="Todas las instituciones"
+                  prefWidth="230"/>
+
+        <Button text="Limpiar filtros" onAction="#clearFilters"/>
+
+        <Button fx:id="refreshButton"
+                text="Actualizar listado"
+                onAction="#loadParticipants"/>
+
+        <Button fx:id="reportButton"
+                text="Reporte imprimible"
+                onAction="#generateReport"/>
+    </FlowPane>
+
+    <Label text="Cambiar los filtros o actualizar el listado cierra la edición sin guardar."
+           wrapText="true"
+           style="-fx-text-fill: #475569;"/>
+
+    <Label fx:id="statusLabel"
+           style="-fx-font-weight: bold;"/>
+
+    <TableView fx:id="participantsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idColumn"
+                         text="ID" prefWidth="55"/>
+            <TableColumn fx:id="namesColumn"
+                         text="Nombres" prefWidth="140"/>
+            <TableColumn fx:id="lastNamesColumn"
+                         text="Apellidos" prefWidth="160"/>
+            <TableColumn fx:id="dniColumn"
+                         text="DNI" prefWidth="95"/>
+            <TableColumn fx:id="emailColumn"
+                         text="Correo" prefWidth="210"/>
+            <TableColumn fx:id="phoneColumn"
+                         text="Teléfono" prefWidth="120"/>
+            <TableColumn fx:id="institutionColumn"
+                         text="Institución" prefWidth="230"/>
+        </columns>
+
+        <placeholder>
+            <Label text="No se encontraron participantes."/>
+        </placeholder>
+    </TableView>
+
+</VBox>
