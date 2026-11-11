@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.team_04.controller.InscripcionesController">
+    <top>
+        <Label text="Gestión de Inscripciones" style="-fx-font-size: 20px; -fx-font-weight: bold;" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets top="15" bottom="15"/>
+            </BorderPane.margin>
+        </Label>
+    </top>
+    <left>
+        <VBox spacing="10" prefWidth="240">
+            <padding>
+                <Insets top="10" right="15" bottom="10" left="15"/>
+            </padding>
+            <Label text="ID Participante:"/>
+            <TextField fx:id="txtIdParticipante" promptText="Ej. 1"/>
+
+            <Label text="Categoría:"/>
+            <TextField fx:id="txtCategoria" promptText="Ej. Backend / Frontend"/>
+
+            <Label text="Fecha:"/>
+            <TextField fx:id="txtFecha" promptText="YYYY-MM-DD"/>
+
+            <Label text="Estado:"/>
+            <TextField fx:id="txtEstado" promptText="Confirmado / Pendiente"/>
+
+            <HBox spacing="10" style="-fx-padding: 10 0 0 0;">
+                <Button text="Guardar" onAction="#handleGuardar" prefWidth="100"/>
+                <Button text="Limpiar" onAction="#handleLimpiar" prefWidth="100"/>
+            </HBox>
+            <HBox spacing="10">
+                <Button text="Eliminar" onAction="#handleEliminar" prefWidth="100"/>
+            </HBox>
+        </VBox>
+    </left>
+    <center>
+        <TableView fx:id="tblInscripciones">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colIdParticipante" text="ID Participante" prefWidth="110"/>
+                <TableColumn fx:id="colCategoria" text="Categoría" prefWidth="130"/>
+                <TableColumn fx:id="colFecha" text="Fecha" prefWidth="110"/>
+                <TableColumn fx:id="colEstado" text="Estado" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
