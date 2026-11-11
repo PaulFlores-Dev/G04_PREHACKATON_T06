@@ -26,7 +26,7 @@ public class InscripcionDAO {
 
     public List<Inscripcion> listar() {
         List<Inscripcion> lista = new ArrayList<>();
-        String sql = "SELECT * FROM inscripciones";
+        String sql = "SELECT id_inscripcion, id_participante, categoria, fecha_inscripcion, estado FROM inscripciones";
         try (Connection conn = ConexionBD.getConexion();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {

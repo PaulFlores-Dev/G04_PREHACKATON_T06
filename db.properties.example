@@ -1,0 +1,4 @@
+# Copiar como db.properties; nunca subir credenciales.
+db.url=jdbc:mysql://127.0.0.1:3309/gestion_eventos?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&connectTimeout=5000&socketTimeout=10000
+db.user=eventos_app
+db.password=

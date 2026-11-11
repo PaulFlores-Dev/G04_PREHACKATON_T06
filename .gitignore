@@ -1,0 +1,10 @@
+.idea/
+*.iml
+target/
+**/target/
+.env
+**/.env
+db.properties
+**/db.properties
+out/
+.local-backups/

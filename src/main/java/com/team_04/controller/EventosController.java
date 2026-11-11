@@ -153,16 +153,16 @@ public class EventosController {
 
     @FXML
     private void generarReporte() {
-        try {
-            InputStream is = getClass().getResourceAsStream("/reports/eventos_reporte.jrxml");
+        try (InputStream is = getClass().getResourceAsStream("/reports/eventos_reporte.jrxml");
+             Connection con = ConexionBD.getConexion()) {
             if (is == null) {
                 mostrarAlerta("Error", "No se encontró la plantilla del reporte.");
                 return;
             }
             JasperReport jr = JasperCompileManager.compileReport(is);
-            Connection con = ConexionBD.getConexion();
+
             JasperPrint jp = JasperFillManager.fillReport(jr, null, con);
-            JasperViewer.viewReport(jp, false);
+            javax.swing.SwingUtilities.invokeLater(() -> JasperViewer.viewReport(jp, false));
         } catch (Exception e) {
             e.printStackTrace();
             mostrarAlerta("Error", "Ocurrió un problema al generar el reporte PDF: " + e.getMessage());

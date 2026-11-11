@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS BD_T04;
 USE BD_T04;
 
-CREATE TABLE eventos (
+CREATE TABLE IF NOT EXISTS eventos (
                          id_evento INT AUTO_INCREMENT PRIMARY KEY,
                          nombre VARCHAR(100) NOT NULL,
                          descripcion TEXT,
@@ -11,7 +11,7 @@ CREATE TABLE eventos (
                          estado VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE participantes (
+CREATE TABLE IF NOT EXISTS participantes (
                                id_participante INT AUTO_INCREMENT PRIMARY KEY,
                                nombres VARCHAR(100) NOT NULL,
                                apellidos VARCHAR(100) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE participantes (
                                institucion VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE inscripciones (
+CREATE TABLE IF NOT EXISTS inscripciones (
                                id_inscripcion INT AUTO_INCREMENT PRIMARY KEY,
                                id_evento INT NOT NULL,
                                id_participante INT NOT NULL,
