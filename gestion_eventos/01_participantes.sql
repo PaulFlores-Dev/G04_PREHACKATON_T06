@@ -1,6 +1,6 @@
 USE gestion_eventos;
 
-CREATE TABLE participantes (
+CREATE TABLE IF NOT EXISTS participantes (
     id_participante INT NOT NULL AUTO_INCREMENT,
     nombres VARCHAR(100) NOT NULL,
     apellidos VARCHAR(100) NOT NULL,

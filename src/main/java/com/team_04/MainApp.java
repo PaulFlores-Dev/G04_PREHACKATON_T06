@@ -1,7 +1,11 @@
 package com.team_04;
 
-public class MainApp {
+import javafx.application.Application;
+
+/** The only desktop application entry point. */
+public final class MainApp {
+    private MainApp() {}
     public static void main(String[] args) {
-        App.main(args);
+        Application.launch(App.class, args);
     }
 }
