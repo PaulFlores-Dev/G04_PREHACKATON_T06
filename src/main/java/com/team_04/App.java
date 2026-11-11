@@ -21,13 +21,25 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        // Botones originales de tu equipo
         Button events = new Button("Eventos");
         events.setId("navEventos");
+
         Button participants = new Button("Participantes");
         participants.setId("navParticipantes");
+
+        // Tu nuevo botón
+        Button inscripciones = new Button("Inscripciones");
+        inscripciones.setId("navInscripciones");
+
+        // Rutas originales intactas + la tuya
         events.setOnAction(event -> navigate("/view/eventos.fxml"));
         participants.setOnAction(event -> navigate("/vallegrande/edu/pe/gestion_eventos/hello-view.fxml"));
-        root.setTop(new ToolBar(new Label("Gestión de eventos"), events, participants));
+        inscripciones.setOnAction(event -> navigate("/view/inscripciones.fxml"));
+
+        // Se incluyen los tres botones juntos en la barra superior
+        root.setTop(new ToolBar(new Label("Gestión de eventos"), events, participants, inscripciones));
+
         showScreen("/view/eventos.fxml");
         stage.setTitle("Gestión de Eventos y Participantes");
         stage.setMinWidth(1000);
