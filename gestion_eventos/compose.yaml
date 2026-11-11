@@ -1,0 +1,15 @@
+services:
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: gestion_eventos
+      MYSQL_USER: eventos_app
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "127.0.0.1:3309:3306"
+    volumes:
+      - eventos_mysql_data:/var/lib/mysql
+
+volumes:
+  eventos_mysql_data:
